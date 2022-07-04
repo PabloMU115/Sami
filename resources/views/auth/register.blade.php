@@ -62,10 +62,6 @@
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
-
-                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="/">
-                    {{ __('¿No se encuentra registrado?') }}
-                </a> --}}
             </div>
         </form>
     </x-jet-authentication-card>
