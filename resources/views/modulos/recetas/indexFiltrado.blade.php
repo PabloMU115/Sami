@@ -2,7 +2,8 @@
 
 @section('title', 'recetas')
 
-@section('content_header')
+@section('content')
+@if ($recetas[0]->id_tenant == Auth::id())
 @if (sizeof($recetas)>0)
     <h2>Recetas del expediente {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
     <table>
@@ -37,9 +38,12 @@
 <br>
 <form action="{{route('recetas.create')}}" method="GET">
     <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
-<button type="submit">Crear Receta</button>
+    <button type="submit">Crear Receta</button>
 </form><br>
 <form action="{{route('recetas.index')}}" method="GET">
     <button type="submit">Volver</button><br>
 </form>
+@else
+{{view('admin.index');}}
+@endif
 @stop

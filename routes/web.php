@@ -6,6 +6,7 @@ use App\Http\Controllers\DiagnosticoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\RecetaController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\InventarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +26,6 @@ Route::get('/', function () {
 Route::get('/admin/user/settings', function () {
     return view('profile.show');
 });
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/admin', function () {
-//         return view('admin');
-//     })->middleware(['verified'])->name('admin');
-// });
 
 Route::resource('admin/expedientes', ExpedienteController::class)->middleware(['verified'])->middleware(['can:tenant', 'verified']);
 
@@ -56,6 +47,8 @@ Route::controller(RecetaController::class)->group(function () {
     Route::get('admin/recetas/lista/{id}', 'indexFiltrado2')->name('recetas.indexFiltrado2')->middleware(['can:tenant', 'verified']);
 });
 Route::resource('admin/recetas', RecetaController::class)->middleware(['can:tenant', 'verified']);
+
+Route::resource('admin/inventario', InventarioController::class)->middleware(['can:tenant', 'verified']);
 
 // Route::controller(Controller::class)->group(function () {
 //     Route::get('admin//lista/', 'indexFiltrado')->name('.indexFiltrado')->middleware(['can:tenant', 'verified']);

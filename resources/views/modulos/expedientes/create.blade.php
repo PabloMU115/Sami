@@ -2,7 +2,7 @@
 
 @section('title', 'Expedientes')
 
-@section('content_header')
+@section('content')
 <form action="{{route('expedientes.store')}}" method="POST">
     @csrf
     <label for="">

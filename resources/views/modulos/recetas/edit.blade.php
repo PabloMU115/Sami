@@ -2,7 +2,8 @@
 
 @section('title', 'Recetas')
 
-@section('content_header')
+@section('content')
+@if ($receta->id_tenant == Auth::id())
     <form action="{{route('recetas.update',$receta)}}" method="post">
         @csrf
         @method('put')
@@ -39,4 +40,7 @@
     <form action="{{route('recetas.index')}}" method="GET">
         <button type="submit">Volver al inicio</button><br>
     </form>
+@else
+{{view('admin.index');}}
+@endif
 @stop

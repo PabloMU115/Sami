@@ -310,28 +310,50 @@ return [
             ],
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'header' => 'Gestion de Inventario',
+            'can'    => 'tenant'
         ],
-        ['header' => 'labels'],
+        //Inventario
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Inventario',
+            'icon'    => 'fas fa-fw fa-warehouse',
+            'can'     => 'tenant',
+            'submenu' => [
+                [
+                    'text' => 'Ver el Inventario',
+                    'url'  => 'admin/inventario',
+                    'icon'    => 'fas fa-fw fa-boxes',
+                ],
+                [
+                    'text'    => 'Ingresar Nuevo Producto',
+                    'url'     => 'admin/inventario/create',
+                    'icon'    => 'fas fa-fw fa-plus',
+                ],
+            ],
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        // ['header' => 'labels'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*

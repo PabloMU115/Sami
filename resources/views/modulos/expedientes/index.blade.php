@@ -2,7 +2,7 @@
 
 @section('title', 'Expedientes')
 
-@section('content_header')
+@section('content')
 <h1>Aquí inician los EXPEDIENTES</h1>
 <ul>
     @if (sizeof($expedientes)>0)

@@ -2,7 +2,7 @@
 
 @section('title', 'Expedientes')
 
-@section('content_header')
+@section('content')
 @if ($expediente->id_tenant == Auth::id())
 <h1>Editar expediente: {{$expediente->id_expediente}}</h1>
     <p>ID: {{$expediente->id_expediente}}</p>

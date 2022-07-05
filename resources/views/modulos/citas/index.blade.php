@@ -13,11 +13,11 @@
     <option value="{{$expediente->id_expediente}}">{{$expediente->nombre}}  {{$expediente->apellidos}} | {{$expediente->id_expediente}} </option>
     @endforeach
     </select><br>
+    <button type="submit">Buscar Cita</button>
     @else
     <label>No hay expedientes guardados...</label> 
     @endif
     <br>
-    <button type="submit">Buscar Cita</button>
 </form>
 <script>
 </script>
