@@ -3,9 +3,9 @@
 @section('title', 'recetas')
 
 @section('content')
-@if ($recetas[0]->id_tenant == Auth::id())
 @if (sizeof($recetas)>0)
-    <h2>Recetas del expediente {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
+@if ($recetas[0]->id_tenant == Auth::id())
+    <h2>Recetas del expediente: {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
     <table>
         <tr>
           <td><strong>ID</strong></td>
@@ -30,10 +30,6 @@
           </tr>
     @endforeach
     </table>
-    @else
-    <br>No se encuentran recetas registradas para este paciente...   
-    @endif
-</ul>
 {{$recetas->links()}}
 <br>
 <form action="{{route('recetas.create')}}" method="GET">
@@ -45,5 +41,15 @@
 </form>
 @else
 {{view('admin.index');}}
+@endif    
+@else
+<br>No se encuentran Recetas registrados para este paciente...
+<form action="{{route('recetas.create')}}" method="GET">
+    <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
+    <br><button type="submit">Crear Receta</button>
+</form><br>
+<form action="{{route('recetas.index')}}" method="GET">
+    <button type="submit">Volver</button><br>
+</form> 
 @endif
 @stop

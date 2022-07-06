@@ -3,9 +3,9 @@
 @section('title', 'Citas')
 
 @section('content')
-@if ($citas[0]->id_tenant == Auth::id())
 @if (sizeof($citas)>0)
-<h2>Citas del expediente {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
+@if ($citas[0]->id_tenant == Auth::id())
+<h2>Citas del expediente: {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
 <table>
     <tr>
       <td><strong>ID</strong></td>
@@ -30,13 +30,9 @@
       </tr>
 @endforeach
 </table>
-@else
-<br>No se encuentran citas registradas para este paciente...   
-@endif
-</ul>
 {{$citas->links()}}
-<br>
 <form action="{{route('citas.create')}}" method="GET">
+<br>
 <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
 <button type="submit">Crear Cita</button>
 </form><br>
@@ -45,5 +41,16 @@
 </form>
 @else
 {{view('admin.index');}}
+@endif   
+@else
+<br>No se encuentran citas registradas para este paciente...
+<form action="{{route('citas.create')}}" method="GET">
+    <br>
+    <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
+    <button type="submit">Crear Cita</button>
+    </form><br>
+    <form action="{{route('citas.index')}}" method="GET">
+    <button type="submit">Volver</button><br>
+    </form>  
 @endif
 @stop

@@ -3,9 +3,9 @@
 @section('title', 'diagnosticos')
 
 @section('content')
-@if ($diagnosticos[0]->id_tenant == Auth::id())
 @if (sizeof($diagnosticos)>0)
-<h2>Diagnosticos del expediente {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
+@if ($diagnosticos[0]->id_tenant == Auth::id())
+<h2>Diagnosticos del expediente: {{$expedientes[0]->nombre}} {{$expedientes[0]->apellidos}}</h2>
 <table>
     <tr>
       <td><strong>ID</strong></td>
@@ -34,10 +34,6 @@
       </tr>
     @endforeach
     </table>
-    @else
-    <br>No se encuentran diagnosticos registrados para este paciente...   
-    @endif
-    </ul>
     {{$diagnosticos->links()}}
     <br>
     <form action="{{route('diagnosticos.create')}}" method="GET">
@@ -49,5 +45,28 @@
     </form>
 @else
 {{view('admin.index');}}
+@endif    
+@else
+<br>No se encuentran diagnosticos registrados para este paciente...
+<form action="{{route('diagnosticos.create')}}" method="GET">
+    <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
+    <br><button type="submit">Crear Diagnostico</button>
+    </form><br>
+    <form action="{{route('diagnosticos.index')}}" method="GET">
+    <button type="submit">Volver</button><br>
+    </form>    
 @endif
 @stop
+
+{{-- @if (sizeof($diagnosticos)>0)
+    
+@else
+<br>No se encuentran diagnosticos registrados para este paciente...
+<form action="{{route('diagnosticos.create')}}" method="GET">
+    <input type="hidden" name="id_expediente" value="{{$expedientes[0]->id_expediente}}">
+    <button type="submit">Crear Diagnostico</button>
+    </form><br>
+    <form action="{{route('diagnosticos.index')}}" method="GET">
+    <button type="submit">Volver</button><br>
+    </form>    
+@endif --}}
