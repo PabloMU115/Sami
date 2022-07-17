@@ -256,19 +256,8 @@ return [
         [
             'text'    => 'Expedientes',
             'icon'    => 'fas fa-fw fa-book-medical',
+            'url'  => 'admin/expedientes',
             'can'     => 'tenant',
-            'submenu' => [
-                [
-                    'text' => 'Ver Todos los Expedientes',
-                    'url'  => 'admin/expedientes',
-                    'icon'    => 'fas fa-fw fa-archive',
-                ],
-                [
-                    'text'    => 'Crear Expediente Nuevo',
-                    'url'     => 'admin/expedientes/create',
-                    'icon'    => 'fas fa-fw fa-plus',
-                ],
-            ],
         ],
         //Diagnosticos
         [
