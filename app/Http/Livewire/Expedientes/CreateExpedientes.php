@@ -26,7 +26,6 @@ class CreateExpedientes extends Component
         $this->validate();
         $this->emit('cerrar');
         $data = substr(str_shuffle("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz"), 1, 3);
-        $datos['id_expediente'] = $data;
         Expediente::create([
             'id_expediente' => $data,
             'id_tenant' => Auth::id(),

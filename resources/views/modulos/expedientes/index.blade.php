@@ -8,5 +8,4 @@
         @else
             <br>No se encuentran Expedientes registrados...
         @endif
-    </ul>
 @stop

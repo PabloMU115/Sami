@@ -71,9 +71,8 @@ class DiagnosticoController extends Controller
         return redirect()->route('diagnosticos.indexFiltrado2',['id' => $expedientes[0]->id_expediente]);
     }
 
-    public function destroy(Diagnostico $diagnostico, Request $request){
+    public function destroy(Diagnostico $diagnostico){
         $diagnostico->delete();
-        $expedientes = Expediente::where('id_tenant','=',Auth::id())->where('id_expediente','=',$request->id_expediente)->paginate();
-        return redirect()->route('diagnosticos.indexFiltrado2',['id' => $expedientes[0]->id_expediente]);
+        return redirect()->route('diagnosticos.index');
     }
 }
