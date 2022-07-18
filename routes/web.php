@@ -27,14 +27,10 @@ Route::get('/admin/user/settings', function () {
     return view('profile.show');
 });
 
-Route::resource('admin/expedientes', ExpedienteController::class)->middleware(['verified'])->middleware(['can:tenant', 'verified']);
+Route::resource('admin/expedientes', ExpedienteController::class)->middleware(['can:tenant', 'verified']);
+Route::resource('admin/diagnosticos', DiagnosticoController::class)->middleware(['can:tenant', 'verified']);
 
 //(la ruta, metodo asociado a la ruta)->name(nombre para accesar la ruta);
-Route::controller(DiagnosticoController::class)->group(function () {
-    Route::get('admin/diagnosticos/lista/', 'indexFiltrado')->name('diagnosticos.indexFiltrado')->middleware(['can:tenant', 'verified']);
-    Route::get('admin/diagnosticos/lista/{id}', 'indexFiltrado2')->name('diagnosticos.indexFiltrado2')->middleware(['can:tenant', 'verified']);
-});
-Route::resource('admin/diagnosticos', DiagnosticoController::class)->middleware(['can:tenant', 'verified']);
 
 Route::controller(CitaController::class)->group(function () {
     Route::get('admin/citas/lista/', 'indexFiltrado')->name('citas.indexFiltrado')->middleware(['can:tenant', 'verified']);

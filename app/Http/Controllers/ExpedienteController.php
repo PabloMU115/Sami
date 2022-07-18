@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Diagnostico;
 use App\Models\Expediente;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ExpedienteController extends Controller
