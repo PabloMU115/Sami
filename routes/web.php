@@ -29,29 +29,9 @@ Route::get('/admin/user/settings', function () {
 
 Route::resource('admin/expedientes', ExpedienteController::class)->middleware(['can:tenant', 'verified']);
 Route::resource('admin/diagnosticos', DiagnosticoController::class)->middleware(['can:tenant', 'verified']);
-
-//(la ruta, metodo asociado a la ruta)->name(nombre para accesar la ruta);
-
-Route::controller(CitaController::class)->group(function () {
-    Route::get('admin/citas/lista/', 'indexFiltrado')->name('citas.indexFiltrado')->middleware(['can:tenant', 'verified']);
-    Route::get('admin/citas/lista/{id}', 'indexFiltrado2')->name('citas.indexFiltrado2')->middleware(['can:tenant', 'verified']);
-});
 Route::resource('admin/citas', CitaController::class)->middleware(['can:tenant', 'verified']);
-
-Route::controller(RecetaController::class)->group(function () {
-    Route::get('admin/recetas/lista/', 'indexFiltrado')->name('recetas.indexFiltrado')->middleware(['can:tenant', 'verified']);
-    Route::get('admin/recetas/lista/{id}', 'indexFiltrado2')->name('recetas.indexFiltrado2')->middleware(['can:tenant', 'verified']);
-});
 Route::resource('admin/recetas', RecetaController::class)->middleware(['can:tenant', 'verified']);
-
 Route::resource('admin/inventario', InventarioController::class)->middleware(['can:tenant', 'verified']);
-
-// Route::controller(Controller::class)->group(function () {
-//     Route::get('admin//lista/', 'indexFiltrado')->name('.indexFiltrado')->middleware(['can:tenant', 'verified']);
-//     Route::get('admin//lista/{id}', 'indexFiltrado2')->name('.indexFiltrado2')->middleware(['can:tenant', 'verified']);
-// });
-// Route::resource('admin/', Controller::class)->middleware(['can:tenant', 'verified']);
-
 
 // -----Rutas de los administradores
 

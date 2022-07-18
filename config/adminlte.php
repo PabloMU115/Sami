@@ -280,13 +280,7 @@ return [
             'text'    => 'Citas',
             'icon'    => 'fas fa-fw fa-calendar-alt',
             'can'     => 'tenant',
-            'submenu' => [
-                [
-                    'text' => 'Ver Todas las Citas',
-                    'url'  => 'admin/citas',
-                    'icon'    => 'fas fa-fw fa-archive',
-                ],
-            ],
+            'url'  => 'admin/citas',
         ],
         //Recetas
         [

@@ -6,11 +6,9 @@
                 <x-jet-label value="Cedula paciente | Nombre del Paciente" />
                 <select wire:model="id_exp">
                     @foreach ($expedientes as $expediente)
-                        @if ($expediente->id_tenant == Auth::id())
                         <option value="{{ $expediente->id_expediente }}">
                             {{ $expediente->cedula }} | {{ $expediente->nombre }}
                             {{ $expediente->apellidos }}</option>
-                        @endif
                         @endforeach
                 </select>
             </div>
@@ -47,7 +45,7 @@
                 </thead>
                 <tbody>
                     @foreach ($diagnosticos as $diagnostico)
-                        @if ($diagnostico->id_tenant == Auth::id() && $diagnostico->id_expediente == $id_exp)
+                        @if ($diagnostico->id_expediente == $id_exp)
                             <tr
                                 class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
                                 <td

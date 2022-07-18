@@ -2,10 +2,21 @@
 
 namespace App\Http\Livewire\Citas;
 
-use Livewire\Component;
+use App\Models\Cita;
+use LivewireUI\Modal\ModalComponent;
 
-class ModalEditar extends Component
+class ModalEditar extends ModalComponent
 {
+
+    public $cita;
+
+    public function mount(Cita $cita)
+    {
+        $this->cita = $cita;
+    }
+
+    protected $listeners = ['cerrar' => 'closeModal'];
+
     public function render()
     {
         return view('livewire.citas.modal-editar');

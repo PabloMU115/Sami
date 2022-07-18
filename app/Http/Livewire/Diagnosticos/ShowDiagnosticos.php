@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Diagnosticos;
 
 use App\Models\Diagnostico;
 use App\Models\Expediente;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,12 +22,12 @@ class ShowDiagnosticos extends Component
     }
 
     public function mount(){
-        $this->id_exp = Expediente::orderBy('id_expediente', 'DESC')->get()[0]->id_expediente;
+        $this->id_exp = Expediente::where("id_tenant",'=',Auth::id())->orderBy('id_expediente', 'DESC')->get()[0]->id_expediente;
     }
 
     public function render()
     {
-        $expedientes = Expediente::orderBy('id_expediente', 'DESC')->get();
+        $expedientes = Expediente::where("id_tenant",'=',Auth::id())->orderBy('id_expediente', 'DESC')->get();
         $diagnosticos = Diagnostico::orWhere('nombre_medico','like','%'.$this->search.'%')
         ->orWhere('categoria','like','%'.$this->search.'%')
         ->orWhere('fecha_emision','like','%'.$this->search.'%')->paginate(5);
