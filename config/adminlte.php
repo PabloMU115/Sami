@@ -47,7 +47,7 @@ return [
     */
 
     'logo' => '<b>SAMI</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/wing.com.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -189,7 +189,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => false,
+    'dashboard_url' => '/admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -242,6 +242,15 @@ return [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',
         // ],
+        [
+            'text'    => 'Inicio',
+            'icon'    => 'fas fa-fw fa-home',
+            'url'     => '/admin',
+        ],
+        [
+            'header' => 'Gestion de Usuarios',
+            'can'    => 'admin'
+        ],
         [
             'text'    => 'Crear Usuario Admimistrativo',
             'icon'    => 'fas fa-fw fa-users',
