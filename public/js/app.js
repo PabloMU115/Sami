@@ -1015,7 +1015,7 @@ window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value
     el._x_transition.out(() => {
     }, () => resolve(hide));
     el._x_transitioning.beforeCancel(() => reject({isFromCancelledTransition: true}));
-  }) : Promise.resolve(hide);
+  }).catch((res) => {}) : Promise.resolve(hide);
   queueMicrotask(() => {
     let closest = closestHide(el);
     if (closest) {
@@ -1028,7 +1028,7 @@ window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value
           let carry = Promise.all([
             el2._x_hidePromise,
             ...(el2._x_hideChildren || []).map(hideAfterChildren)
-          ]).then(([i]) => i());
+          ]).then(([i]) => i()).catch((res) => {});
           delete el2._x_hidePromise;
           delete el2._x_hideChildren;
           return carry;

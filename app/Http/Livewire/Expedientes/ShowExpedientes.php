@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Expedientes;
 
 use App\Models\Expediente;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,11 +21,7 @@ class ShowExpedientes extends Component
 
     public function render()
     {
-        $expedientes = Expediente::where('cedula','like','%'.$this->search.'%')
-        ->orWhere('nombre','like','%'.$this->search.'%')
-        ->orWhere('apellidos','like','%'.$this->search.'%')
-        ->orWhere('tipo_sangre','like','%'.$this->search.'%')
-        ->orWhere('edad','like','%'.$this->search.'%')->orderBy('id_expediente', 'DESC')->paginate(5);
+        $expedientes = Expediente::where("id_tenant",'=',Auth::id())->paginate(4);
         return view('livewire.expedientes.show-expedientes', compact('expedientes'));
     }
 }

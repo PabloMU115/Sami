@@ -12,7 +12,7 @@ class ShowCitas extends Component
 {
     use WithPagination;
 
-    public $search, $id_exp, $cant=0;
+    public $search, $id_exp;
 
     protected $listeners = ['render' => 'render'];
 
@@ -28,9 +28,7 @@ class ShowCitas extends Component
     public function render()
     {
         $expedientes = Expediente::where("id_tenant",'=',Auth::id())->orderBy('id_expediente', 'DESC')->get();
-        $citas = Cita::orWhere('nombre_medico','like','%'.$this->search.'%')
-        ->orWhere('fecha','like','%'.$this->search.'%')->paginate(5);
-        $this->cant=0;
+        $citas = Cita::where("id_tenant",'=',Auth::id())->where("id_expediente",'=',$this->id_exp)->paginate(4);
         return view('livewire.citas.show-citas', compact('expedientes'), compact('citas'));
     }
 }

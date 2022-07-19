@@ -1,16 +1,18 @@
 <div>
-    <br><br>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
         <div class="grid grid-cols-2 justify-items-start bg-gray-200">
             <div class="mb-4">
-                <x-jet-label value="Cedula paciente | Nombre del Paciente" />
+                <label for="id_expediente">Seleccione el Expediente que desea gestionar:</label>
                 <select wire:model="id_exp">
                     @foreach ($expedientes as $expediente)
-                        <option value="{{ $expediente->id_expediente }}">
-                            {{ $expediente->cedula }} | {{ $expediente->nombre }}
-                            {{ $expediente->apellidos }}</option>
-                        @endforeach
+                        @if ($expediente->id_tenant == Auth::id())
+                            <option value="{{ $expediente->id_expediente }}">
+                                {{ $expediente->cedula }} | {{ $expediente->nombre }}
+                                {{ $expediente->apellidos }}</option>
+                        @endif
+                    @endforeach
                 </select>
+                <x-jet-label value="Cedula paciente | Nombre del Paciente" />
             </div>
             <div class="justify-self-end">
                 <button type="button" class="btn btn-primary mt-4 mb-4 justify-end"
@@ -22,11 +24,6 @@
         @if (sizeof($diagnosticos) > 0)
             <table
                 class="border-separate border border-slate-500 w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <div class="flex items-center">
-                    <input wire:model="search"
-                        class="flex-1 ml-4 mb-4 mr-4 bg-gray-200 appearance-none border-2 border-black rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
-                        placeholder="Buscar..." type="text">
-                </div>
                 <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="text-center border border-slate-600 py-3 px-6">
@@ -45,7 +42,7 @@
                 </thead>
                 <tbody>
                     @foreach ($diagnosticos as $diagnostico)
-                        @if ($diagnostico->id_expediente == $id_exp)
+                        @if ($diagnostico->id_expediente == $id_exp && $diagnostico->id_tenant == Auth::id())
                             <tr
                                 class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
                                 <td
@@ -91,6 +88,3 @@
         @endif
     </div>
 </div>
-{{-- @else
-                <div class="text-lg text-black text-center">No se encuentran Diagnosticos registrados...</div>
-            @endif --}}

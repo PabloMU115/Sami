@@ -287,13 +287,7 @@ return [
             'text'    => 'Recetas',
             'icon'    => 'fas fa-fw fa-prescription-bottle-alt',
             'can'     => 'tenant',
-            'submenu' => [
-                [
-                    'text' => 'Ver Todas las Recetas',
-                    'url'  => 'admin/recetas',
-                    'icon'    => 'fas fa-fw fa-archive',
-                ],
-            ],
+            'url'  => 'admin/recetas',
         ],
         [
             'header' => 'Gestion de Inventario',
