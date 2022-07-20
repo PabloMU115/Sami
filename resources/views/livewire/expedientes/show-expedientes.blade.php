@@ -1,13 +1,13 @@
 <div>
-    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-        <table class="border-separate border border-slate-500 w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <div class="flex justify-end">
-                <button type="button" class="btn btn-primary mt-4 mb-4"
+    <div class="overflow-x-auto mb-4 relative sm:rounded-lg">
+        <table class="mt-2 border-separate shadow-md border border-slate-500 w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            @if (sizeof($expedientes) > 0)
+            <div class="flex justify-center">
+                <button type="button" class="btn btn-primary mt-5 mb-4"
                     onclick="Livewire.emit('openModal', 'expedientes.modal-crear')">
                     Nuevo Expediente
                 </button>
             </div>
-            @if (sizeof($expedientes) > 0)
                 <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="text-center border border-slate-600 py-3 px-6">
@@ -77,6 +77,14 @@
                         @endif
                     @endforeach
                 </tbody>
+            @else
+            <div class="flex justify-center">
+                <button type="button" class="btn btn-primary mt-5 mb-4"
+                    onclick="Livewire.emit('openModal', 'expedientes.modal-crear')">
+                    Nuevo Expediente
+                </button>
+            </div>
+                <h1>No se encuentran Expedientes registrados en el sistema</h1>
             @endif
         </table>
         @if ($expedientes->hasPages())

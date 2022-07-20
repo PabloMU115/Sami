@@ -22,7 +22,7 @@ class CreateRecetas extends Component
     }
 
     protected $rules = [
-        'nombre_medico' => 'required|max:30|min:1',
+        'nombre_medico' => 'required|max:50|min:1',
         'indicaciones' => 'required|max:200'
     ];
 

@@ -9,7 +9,7 @@ use Livewire\Component;
 class CreateCitas extends Component
 {
 
-    public $id_exp, $nombre_medico, $fecha;
+    public $id_exp, $nombre_medico, $fecha, $descripcion="Ninguna";
 
     public function cerrar()
     {
@@ -23,7 +23,7 @@ class CreateCitas extends Component
     }
 
     protected $rules = [
-        'nombre_medico' => 'required|max:30|min:1',
+        'nombre_medico' => 'required|max:50|min:1',
         'fecha' => 'required'
     ];
 
@@ -36,6 +36,7 @@ class CreateCitas extends Component
             'id_cita' => $data,
             'id_tenant' => Auth::id(),
             'id_expediente' => $this->id_exp,
+            'descripcion' => $this->descripcion,
             'nombre_medico' => $this->nombre_medico,
             'fecha' => $this->fecha,
         ]);

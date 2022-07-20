@@ -13,9 +13,9 @@ class CreateExpedientes extends Component
 
     protected $rules = [
         'cedula'=>'required|max:12|min:12',
-        'nombre'=>'required|max:50|min:2',
-        'apellidos'=>'required|max:50|min:2',
-        'alergias'=>'required|max:50'
+        'nombre'=>'required|max:50|min:3',
+        'apellidos'=>'required|max:50|min:3',
+        'alergias'=>'required|max:200'
     ];
 
     public function cerrar(){

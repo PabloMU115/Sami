@@ -2,19 +2,19 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="mb-4 ml-4">
             <x-jet-label value="Cedula" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="cedula" disabled />
+            <x-jet-input class="border-2 border-black rounded" type="text" maxlength="12" wire:model="cedula" disabled />
             <br>
             <x-jet-input-error for="cedula" />
         </div>
         <div class="mb-4 ml-4">
             <x-jet-label value="Nombre" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="nombre" />
+            <x-jet-input class="border-2 border-black rounded" type="text" maxlength="50" wire:model="nombre" />
             <br>
             <x-jet-input-error for="nombre" />
         </div>
         <div class="mb-4 ml-4">
             <x-jet-label value="Apellidos" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="apellidos" />
+            <x-jet-input class="border-2 border-black rounded" type="text" maxlength="50" wire:model="apellidos" />
             <br>
             <x-jet-input-error for="apellidos" />
         </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="mb-4 ml-4">
             <x-jet-label value="Alergias" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="alergias" />
+            <textarea rows="6" class="w-full border-2 border-black rounded" maxlength="200" wire:model="alergias"></textarea>
         </div>
     </div>
     <div class="modal-footer">

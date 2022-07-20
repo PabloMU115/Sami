@@ -22,7 +22,10 @@ class ShowCitas extends Component
     }
 
     public function mount(){
-        $this->id_exp = Expediente::where("id_tenant",'=',Auth::id())->orderBy('id_expediente', 'DESC')->get()[0]->id_expediente;
+        $expedientes = Expediente::where("id_tenant",'=',Auth::id())->orderBy('id_expediente', 'DESC')->get();
+        if(sizeof($expedientes) > 0){
+            $this->id_exp = Expediente::where('id_tenant','like','%'.Auth::id().'%')->orderBy('id_expediente', 'DESC')->get()[0]->id_expediente;
+        }
     }
 
     public function render()

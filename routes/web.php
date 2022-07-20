@@ -38,4 +38,6 @@ Route::resource('admin/inventario', InventarioController::class)->middleware(['c
 Route::controller(AdminController::class)->group(function () {
     Route::get('admin/crearUsuario/', 'crear')->name('admin.crear')->middleware(['can:admin', 'verified']);
     Route::post('admin/crearUsuario/', 'store')->name('admin.store')->middleware(['can:admin', 'verified']);
+    Route::get('admin/actualizarPago/', 'actualizar')->name('admin.actualizar')->middleware(['can:tenant', 'verified']);
+    Route::put('admin/actualizarPago/', 'update')->name('admin.update')->middleware(['can:tenant', 'verified']);
 });

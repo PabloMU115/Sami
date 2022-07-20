@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('id_cita',3)->primary();
             $table->string('id_expediente',12)->index();
             $table->string('id_tenant',6)->index();
-            $table->string('nombre_medico',30);
+            $table->string('nombre_medico',50);
+            $table->string('descripcion', 100);
             $table->date('fecha');
         });
     }

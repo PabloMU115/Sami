@@ -9,7 +9,8 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function crear(){
+    public function crear()
+    {
         return view('auth.registerAdmin');
     }
 
@@ -24,7 +25,26 @@ class AdminController extends Controller
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make(strtolower($input['name'])),
+            'type' => '2',
+            'active' => '0',
+            'inicio_sub' => date('y/m/d'),
+            'vencimiento_sub' => date('y/m/d'),
         ])->assignRole('admin');
         return redirect()->route('admin.crear');
+    }
+
+    public function actualizar()
+    {
+        return view('modulos.actualizarPago');
+    }
+
+    public function update(Request $usuario)
+    {
+        User::where('id', '=', $usuario->id)->update([
+            'active' => '1',
+            'inicio_sub' => date('y/m/d'),
+            'vencimiento_sub' => date('y/m/d', strtotime(' + 30 days')),
+        ]);
+        return redirect()->route('admin.index',);
     }
 }

@@ -1,14 +1,14 @@
 <div>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4">
         <div class="mb-4 ml-4">
             <x-jet-label value="Nombre del Encargado" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="nombre_medico" />
+            <x-jet-input class="border-2 border-black rounded" type="text" maxlength="50" wire:model="nombre_medico" />
             <br>
             <x-jet-input-error for="nombre_medico" />
         </div>
         <div class="mb-4 ml-4">
             <x-jet-label value="Indicaciones" />
-            <x-jet-input class="border-2 border-black rounded" type="text" wire:model="indicaciones"/>
+            <textarea rows="6" class="w-full border-2 border-black rounded" maxlength="200" wire:model="indicaciones"></textarea>
             <br>
             <x-jet-input-error for="indicaciones" />
         </div>

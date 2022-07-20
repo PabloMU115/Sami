@@ -31,7 +31,10 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            // 'type' => 0,
+            'type' => '1',
+            'active' => '0',
+            'inicio_sub' => date('y/m/d'),
+            'vencimiento_sub' => date('y/m/d'),
         ])->assignRole('tenant');
     }
 }

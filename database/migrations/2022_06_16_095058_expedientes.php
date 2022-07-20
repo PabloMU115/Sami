@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('edad',false,true);
             $table->string('genero',1);
             $table->string('alergias',50);
-            $table->string('tipo_sangre',1);
+            $table->string('tipo_sangre',3);
         });
     }
 

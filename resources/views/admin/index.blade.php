@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Inicio')
 
 @section('content_header')
     <h1>Dashboard</h1>
@@ -8,6 +8,11 @@
 
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
+    @if (Auth::user()->active == 0 && Auth::user()->type == 1)
+        <script>
+            window.location.href = "/admin/actualizarPago";
+        </script>
+    @endif
 @stop
 
 @section('css')
@@ -15,6 +20,11 @@
 @stop
 
 @section('js')
-<script>
-</script>
+    <script>
+        //     Swal.fire(
+        //   'Good job!',
+        //   'You clicked the button!',
+        //   'success'
+        // )
+    </script>
 @stop

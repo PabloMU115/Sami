@@ -13,7 +13,7 @@
         </x-slot>
 
         <div class="mt-4 text-sm text-gray-600">
-            {{ __('Antes de continuar, es necesario que verifique su dirección de correo electrónico con el enlace que le enviamos a su dirección de correo electronico. Si no recibió el correo de verificación, pulse el botón de abajo para recibir otro.') }}
+            {{ __('¡Su registro ha sido completado de forma satisfactoria! Antes de continuar, es necesario que verifique su dirección de correo electrónico con el enlace que le enviamos a su dirección de correo electronico. Si no recibió el correo de verificación, pulse el botón de abajo para recibir otro.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
