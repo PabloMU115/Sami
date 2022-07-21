@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expedientes', function (Blueprint $table) {
-            $table->string('id_expediente',12)->primary();
+        Schema::create('detalles', function (Blueprint $table) {
+            $table->id();
             $table->string('id_tenant',6)->index();
-            $table->string('cedula',12);
-            $table->string('nombre',50);
-            $table->string('apellidos',50);
-            $table->integer('edad',false,true);
-            $table->string('genero',1);
-            $table->string('alergias',50);
-            $table->string('tipo',1);
-            $table->string('tipo_sangre',3);
+            $table->string('descripcion',200);
+            $table->string('categoria',20);
+            $table->integer('cantidad');
+            $table->integer('precio');
+            $table->integer('subtotal');
+            $table->string('numero_factura',30);
+            $table->timestamps();
+
         });
     }
 

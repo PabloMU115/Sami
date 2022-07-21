@@ -7,6 +7,7 @@ use App\Models\Expediente;
 use App\Models\Cita;
 use App\Models\Diagnostico;
 use App\Models\Receta;
+use App\Models\History;
 use App\Models\Inventario;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +27,7 @@ class DeleteUser implements DeletesUsers
         $expedientes = Expediente::where('id_tenant','=',Auth::id())->get();
         $citas = Cita::where('id_tenant','=',Auth::id())->get();
         $recetas = Receta::where('id_tenant','=',Auth::id())->get();
+        $productos = Inventario::where('id_tenant','=',Auth::id())->get();
         foreach ($diagnosticos as $diagnostico) {
             $diagnostico->delete();
         }
@@ -38,6 +40,21 @@ class DeleteUser implements DeletesUsers
         foreach ($expedientes as $expediente) {
             $expediente->delete();
         }
-        $user->delete();
+        foreach ($productos as $producto) {
+            $producto->delete();
+        }
+        if ($user->type=1) {
+            History::create([
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'type' => $user->type,
+                'deleted_at' => date('y/m/d'),
+            ]);
+            $user->delete();
+        } else {
+            $user->delete();
+        }
+        
     }
 }

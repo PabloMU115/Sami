@@ -20,19 +20,9 @@ class ExpedienteController extends Controller
     }
 
     public function destroy(Expediente $expediente){
-        $diagnosticos = Diagnostico::where('id_tenant','=',Auth::id())->where('id_expediente','=',$expediente->id_expediente)->get();
-        $citas = Cita::where('id_tenant','=',Auth::id())->where('id_expediente','=',$expediente->id_expediente)->get();
-        $recetas = Receta::where('id_tenant','=',Auth::id())->where('id_expediente','=',$expediente->id_expediente)->get();
-        foreach ($diagnosticos as $diagnostico) {
-            $diagnostico->delete();
-        }
-        foreach ($citas as $cita) {
-            $cita->delete();
-        }
-        foreach ($recetas as $receta) {
-            $receta->delete();
-        }
-        $expediente->delete();
+        $expediente->update([
+            'tipo'=>"0",
+        ]);
         return redirect()->route('expedientes.index');
     }
 }

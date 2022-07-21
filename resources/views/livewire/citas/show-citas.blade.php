@@ -7,19 +7,32 @@
                     <select class="shadow-md rounded" wire:model="id_exp">
                         @foreach ($expedientes as $expediente)
                             @if ($expediente->id_tenant == Auth::id())
-                                <option value="{{ $expediente->id_expediente }}">
+                            @switch($expediente->tipo)
+                                @case(0)
+                                <option class="bg-red" value="{{ $expediente->id_expediente }}">
                                     {{ $expediente->cedula }} | {{ $expediente->nombre }}
-                                    {{ $expediente->apellidos }}</option>
+                                    {{ $expediente->apellidos }} | Inactivo</option>
+                                    @break
+                                @case(1)
+                                <option class="bg-green" value="{{ $expediente->id_expediente }}">
+                                    {{ $expediente->cedula }} | {{ $expediente->nombre }}
+                                    {{ $expediente->apellidos }} | Activo</option>
+                                    @break
+                            @endswitch
                             @endif
                         @endforeach
                     </select>
                     <x-jet-label value="Cedula paciente | Nombre del Paciente" />
                 </div>
                 <div class="mt-20 justify-self-end">
-                    <button type="button" class="btn btn-primary mt-4 mb-4 justify-end"
-                        onclick="Livewire.emit('openModal', 'citas.modal-crear', {{ json_encode(['id_exp' => $id_exp]) }})">
-                        Nueva Cita
-                    </button>
+                    @foreach ($expedientes as $expediente)
+                        @if ($expediente->id_expediente == $id_exp && $expediente->tipo == '1')
+                            <button type="button" class="btn btn-primary mt-4 mb-4 justify-end"
+                                onclick="Livewire.emit('openModal', 'citas.modal-crear', {{ json_encode(['id_exp' => $id_exp]) }})">
+                                Nueva Cita
+                            </button>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             @if (sizeof($citas) > 0)
@@ -53,20 +66,24 @@
                                         {{ $cita->fecha }}
                                     </td>
                                     <td>
-                                        <div class="flex flex-row space-x-4 justify-center">
-                                            <button
-                                                class="bg-yellow-500 hover:bg-yellow-300 dark:hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 border border-blue-700 rounded"
-                                                type="submit" data-toggle="modal"
-                                                onclick="Livewire.emit('openModal', 'citas.modal-editar', {{ json_encode(['cita' => $cita]) }})"><i
-                                                    class="fas fa-edit"></i></button><br>
-                                            <form action="{{ route('citas.destroy', $cita) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button
-                                                    class="bg-red-500 hover:bg-red-300 dark:hover:bg-red-500 text-gray-700 font-bold py-2 px-4 border border-blue-700 rounded"
-                                                    type="submit"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                        </div>
+                                        @foreach ($expedientes as $expediente)
+                                            @if ($expediente->id_expediente == $id_exp && $expediente->tipo == '1')
+                                                <div class="flex flex-row space-x-4 justify-center">
+                                                    <button
+                                                        class="bg-yellow-500 hover:bg-yellow-300 dark:hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 border border-blue-700 rounded"
+                                                        type="submit" data-toggle="modal"
+                                                        onclick="Livewire.emit('openModal', 'citas.modal-editar', {{ json_encode(['cita' => $cita]) }})"><i
+                                                            class="fas fa-edit"></i></button><br>
+                                                    <form action="{{ route('citas.destroy', $cita) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button
+                                                            class="bg-red-500 hover:bg-red-300 dark:hover:bg-red-500 text-gray-700 font-bold py-2 px-4 border border-blue-700 rounded"
+                                                            type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                             @endif

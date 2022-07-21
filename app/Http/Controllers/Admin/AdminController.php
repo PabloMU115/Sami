@@ -33,6 +33,16 @@ class AdminController extends Controller
         return redirect()->route('admin.crear');
     }
 
+    public function verTenants()
+    {
+        return view('modulos.verTenants');
+    }
+
+    public function verHistorial()
+    {
+        return view('modulos.verHistorial');
+    }
+
     public function actualizar()
     {
         return view('modulos.actualizarPago');

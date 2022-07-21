@@ -35,6 +35,7 @@ class CreateExpedientes extends Component
             'edad' => $this->edad,
             'alergias' => $this->alergias,
             'genero' => $this->genero,
+            'tipo' => "1",
             'tipo_sangre' => $this->tipo_sangre,
         ]);
         $this->reset(['cedula', 'nombre', 'apellidos', 'alergias', 'edad', 'genero', 'tipo_sangre']);

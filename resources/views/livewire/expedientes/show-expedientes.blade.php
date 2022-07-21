@@ -58,6 +58,7 @@
                                     {{ $expediente->genero }}
                                 </td>
                                 <td>
+                                    @if ($expediente->tipo==1)  
                                     <div class="flex flex-row space-x-4 justify-center">
                                         <button
                                             class="bg-yellow-500 hover:bg-yellow-300 dark:hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 border border-blue-700 rounded"
@@ -72,6 +73,7 @@
                                                 type="submit"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endif

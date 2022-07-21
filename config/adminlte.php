@@ -243,11 +243,6 @@ return [
         //     'text' => 'search',
         // ],
         [
-            'text'    => 'Inicio',
-            'icon'    => 'fas fa-fw fa-home',
-            'url'     => '/admin',
-        ],
-        [
             'header' => 'Gestion de Usuarios',
             'can'    => 'admin'
         ],
@@ -256,6 +251,27 @@ return [
             'icon'    => 'fas fa-fw fa-users',
             'can'     => 'admin',
             'url'     => 'admin/crearUsuario',
+        ],
+        [
+            'header' => 'Gestion de Tenants',
+            'can'    => 'admin'
+        ],
+        [
+            'text'    => 'Tenants',
+            'icon'    => 'fas fa-fw fa-user-circle',
+            'can'     => 'admin',
+            'submenu' => [
+                [
+                    'text' => 'Ver Tenants Regsitrados',
+                    'url'     => 'admin/tenantsRegistrados',
+                    'icon'    => 'fas fa-fw fa-book-reader',
+                ],
+                [
+                    'text'    => 'Historial de Tenants',
+                    'url'     => 'admin/historialTenants',
+                    'icon'    => 'fas fa-fw fa-user-clock',
+                ],
+            ],
         ],
         [
             'header' => 'Gestion de Pacientes',
@@ -298,18 +314,7 @@ return [
             'text'    => 'Inventario',
             'icon'    => 'fas fa-fw fa-warehouse',
             'can'     => 'tenant',
-            'submenu' => [
-                [
-                    'text' => 'Ver el Inventario',
-                    'url'  => 'admin/inventario',
-                    'icon'    => 'fas fa-fw fa-boxes',
-                ],
-                [
-                    'text'    => 'Ingresar Nuevo Producto',
-                    'url'     => 'admin/inventario/create',
-                    'icon'    => 'fas fa-fw fa-plus',
-                ],
-            ],
+            'url'  => 'admin/inventario',
         ],
         // [
         //     'text'        => 'pages',

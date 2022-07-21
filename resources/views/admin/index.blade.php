@@ -3,11 +3,19 @@
 @section('title', 'Inicio')
 
 @section('content_header')
-    <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+@if (Auth::user()->type == 2)
+        <script>
+            window.location.href = "/admin/crearUsuario";
+        </script>
+    @endif
+    @if (Auth::user()->active == 1 && Auth::user()->type == 1)
+        <script>
+            window.location.href = "/admin/expedientes";
+        </script>
+    @endif
     @if (Auth::user()->active == 0 && Auth::user()->type == 1)
         <script>
             window.location.href = "/admin/actualizarPago";
