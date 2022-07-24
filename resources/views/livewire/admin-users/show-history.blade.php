@@ -43,7 +43,8 @@
                     @endforeach
                 </tbody>
             @else
-                <h1>No se encuentran tenants registrados en el sistema</h1>
+            <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No se encuentran Tenants registrados en el
+                sistema</h1>
             @endif
         </table>
         @if ($tenants->hasPages())

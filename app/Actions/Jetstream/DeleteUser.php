@@ -6,6 +6,7 @@ use Laravel\Jetstream\Contracts\DeletesUsers;
 use App\Models\Expediente;
 use App\Models\Cita;
 use App\Models\Diagnostico;
+use App\Models\Factura;
 use App\Models\Receta;
 use App\Models\History;
 use App\Models\Inventario;
@@ -24,6 +25,7 @@ class DeleteUser implements DeletesUsers
         $user->deleteProfilePhoto();
         $user->tokens->each->delete();
         $diagnosticos = Diagnostico::where('id_tenant','=',Auth::id())->get();
+        $facturas = Factura::where('id_tenant','=',Auth::id())->where('tipo','=','1')->get();
         $expedientes = Expediente::where('id_tenant','=',Auth::id())->get();
         $citas = Cita::where('id_tenant','=',Auth::id())->get();
         $recetas = Receta::where('id_tenant','=',Auth::id())->get();
@@ -42,6 +44,9 @@ class DeleteUser implements DeletesUsers
         }
         foreach ($productos as $producto) {
             $producto->delete();
+        }
+        foreach ($facturas as $factura) {
+            $factura->delete();
         }
         if ($user->type=1) {
             History::create([

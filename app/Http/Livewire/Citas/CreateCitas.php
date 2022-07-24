@@ -40,7 +40,7 @@ class CreateCitas extends Component
             'nombre_medico' => $this->nombre_medico,
             'fecha' => $this->fecha,
         ]);
-        $this->reset(['nombre_medico']);
+        $this->reset(['nombre_medico','descripcion']);
         $this->emit('render');
     }
 

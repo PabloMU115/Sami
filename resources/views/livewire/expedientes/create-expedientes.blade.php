@@ -2,7 +2,7 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="mb-4 ml-4">
             <x-jet-label value="Cedula" />
-            <x-jet-input class="border-2 border-black rounded" type="text" minlength="12" maxlength="12" wire:model="cedula" />
+            <x-jet-input class="border-2 border-black rounded" type="text" minlength="10" maxlength="10" wire:model="cedula" />
             <br>
             <x-jet-input-error for="cedula" />
         </div>

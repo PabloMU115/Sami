@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
     <x-jet-authentication-card>
         <div class="flex items-center justify mt-4">
             <form action="/">
@@ -29,7 +30,7 @@
 
             <div class="block">
                 <x-jet-label class="mt-4" for="email" value="Correo Electrónico" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block py-2 mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">

@@ -12,12 +12,12 @@ class EditInventario extends Component
     public function mount(Inventario $inventario)
     {
         $this->actualizar = $inventario;
-        $this->proveedor = $inventario->cedula;
-        $this->nombre_producto = $inventario->nombre;
-        $this->cantidad = $inventario->apellidos;
-        $this->precio = $inventario->edad;
-        $this->tipo = $inventario->alergias;
-        $this->descripcion = $inventario->genero;
+        $this->proveedor = $inventario->proveedor;
+        $this->nombre_producto = $inventario->nombre_producto;
+        $this->cantidad = $inventario->cantidad;
+        $this->precio = $inventario->precio;
+        $this->tipo = $inventario->tipo;
+        $this->descripcion = $inventario->descripcion;
     }
 
     protected $rules = [

@@ -12,7 +12,7 @@ class CreateExpedientes extends Component
     public $cedula, $nombre, $apellidos, $edad=0, $alergias="Ninguna", $genero="M", $tipo_sangre="A+";
 
     protected $rules = [
-        'cedula'=>'required|max:12|min:12',
+        'cedula'=>'required|max:10|min:10',
         'nombre'=>'required|max:50|min:3',
         'apellidos'=>'required|max:50|min:3',
         'alergias'=>'required|max:200'

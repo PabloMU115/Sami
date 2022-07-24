@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
     <x-jet-authentication-card>
         <div class="flex items-center justify mt-4">
             <form action="/">
@@ -29,7 +30,7 @@
                 <div>
                     <x-jet-button type="submit">
                         <i class="fas fa-envelope"></i>
-                        Volver a Enviar correo de verificación
+                         Volver a Enviar correo de verificación
                     </x-jet-button>
                 </div>
             </form>

@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('facturas', function (Blueprint $table) {
-        
             $table->id();
             $table->string('id_tenant',6)->index();
             $table->string('id_cliente',6);
             $table->string('nombre_cliente',50);
             $table->string('numero_factura',30);
             $table->integer('total');
-            $table->string('fecha',40);
+            $table->string('tipo',1);
             $table->timestamps();
         });
     }

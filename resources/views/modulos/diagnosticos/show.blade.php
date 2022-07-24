@@ -2,23 +2,34 @@
 
 @section('title', 'diagnosticos')
 
-@section('content_header')
-<h1>Editar diagnostico: {{$diagnostico->id_diagnostico}}</h1>
-<p>ID: {{$diagnostico->id_diagnostico}}</p>
-<p>Nombre del Paciente: {{$diagnostico->nombre_paciente}}</p>
-<p>Nombre nombre del encargado: {{$diagnostico->nombre_medico}}</p>
-<p>Categoria: {{$diagnostico->categoria}}</p>
-<p>Descripcion: {{$diagnostico->descripcion}}</p>
-<p>Fecha en la que fue emitido el diagnostico: {{$diagnostico->fecha_emision}}</p>
-<form action="{{route('diagnosticos.edit',$diagnostico)}}" method="GET">
-    <button type="submit">Editar</button><br>
-</form>
-<form action="{{route('diagnosticos.destroy',$diagnostico)}}" method="post">
-    @csrf
-    @method('delete')
-    <button type="submit">Eliminar</button>
-</form>
-<form action="{{route('diagnosticos.index')}}" method="GET">
-    <button type="submit">Volver</button><br>
-</form>
+@section('content')
+@if ($diagnostico->id_tenant == Auth::id())
+<div class="ml-72 mr-64 bg-gray-200 rounded">
+    <div class="grid grid-cols-3 gap-4">
+        <div class="mb-4 ml-4">
+            <x-jet-label class="mt-20" value="Nombre del Encargado" />
+            {{$diagnostico->nombre_medico}}
+        </div>
+        <div class="mt-20 mb-4 ml-4">
+            <x-jet-label value="Categoria" />
+            {{$diagnostico->categoria}}
+        </div>
+        <div class="mt-20 mb-4 ml-4">
+            <x-jet-label value="Descripcion" />
+            {{$diagnostico->descripcion}}
+        </div>
+    </div>
+    <div class="mt-20 ml-20 grid grid-cols-2 justify-items-end">
+        <form action="{{route('diagnosticos.index')}}" method="GET">
+            <x-jet-danger-button type="submit">
+                Volver
+            </x-jet-danger-button>
+        </form>
+    </div>
+</div>
+@else
+<script>
+    window.location.href = "/admin/diagnosticos";
+</script>
+@endif
 @stop

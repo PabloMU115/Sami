@@ -2,7 +2,7 @@
     @if (sizeof($expedientes) > 0)
         <div class="overflow-x-auto relative sm:rounded-lg">
             <div class="grid grid-cols-2 justify-items-start">
-                <div class="mt-20 mb-4">
+                <div class="mt-10 mb-4">
                     <label for="id_expediente">Seleccione el Expediente que desea gestionar:</label>
                     <select class="shadow-md rounded" wire:model="id_exp">
                         @foreach ($expedientes as $expediente)
@@ -24,7 +24,7 @@
                     </select>
                     <x-jet-label value="Cedula paciente | Nombre del Paciente" />
                 </div>
-                <div class="mt-20 justify-self-end">
+                <div class="mt-10 justify-self-end">
                     @foreach ($expedientes as $expediente)
                         @if ($expediente->id_expediente == $id_exp && $expediente->tipo == '1')
                             <button type="button" class="btn btn-primary mt-4 mb-4 justify-end"
@@ -44,6 +44,9 @@
                                 Nombre del Medico
                             </th>
                             <th scope="col" class="text-center border border-slate-600 py-3 px-6">
+                                Descripcion
+                            </th>
+                            <th scope="col" class="text-center border border-slate-600 py-3 px-6">
                                 Fecha de la cita
                             </th>
                             <th scope="col" class="text-center border border-slate-600 py-3 px-6">
@@ -58,8 +61,11 @@
                                     class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
                                     <td
                                         class="text-center border border-slate-700 py-4 px-6 font-medium text-gray-900  dark:text-white">
-                                        <a
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ $cita->nombre_medico }}</a>
+                                        {{ $cita->nombre_medico }}
+                                    </td>
+                                    <td
+                                        class="text-center border border-slate-700 py-4 px-6 font-medium text-gray-900  dark:text-white">
+                                        {{ $cita->descripcion }}
                                     </td>
                                     <td
                                         class="text-center border border-slate-700 py-4 px-6 font-medium text-gray-900  dark:text-white">
@@ -90,6 +96,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                @else
+            <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No hay Citas registradas</h1>
             @endif
             @if ($citas->hasPages())
                 <div class="px-6 py-3">
@@ -98,6 +106,7 @@
             @endif
         </div>
     @else
-        <h1>No se encuentran Expedientes registrados en el sistema</h1>
+    <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No se encuentran Expedientes registrados en el
+        sistema</h1>
     @endif
 </div>

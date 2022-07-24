@@ -86,7 +86,7 @@
                     Nuevo Expediente
                 </button>
             </div>
-                <h1>No se encuentran Expedientes registrados en el sistema</h1>
+            <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No hay Expedientes registrados en el sistema</h1>
             @endif
         </table>
         @if ($expedientes->hasPages())

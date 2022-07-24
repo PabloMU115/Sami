@@ -2,14 +2,14 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="mb-4 ml-4">
             <x-jet-label value="Nombre" />
-            <x-jet-input class="border-2 border-black rounded" type="text" minlength="12" maxlength="12"
+            <x-jet-input class="border-2 border-black rounded" type="text" minlength="3" maxlength="40"
                 wire:model="nombre_producto" />
             <br>
             <x-jet-input-error for="nombre_producto" />
         </div>
         <div class="mb-4 ml-4">
             <x-jet-label value="Proveedor" />
-            <x-jet-input class="border-2 border-black rounded" type="text" minlength="3" maxlength="50"
+            <x-jet-input class="border-2 border-black rounded" type="text" minlength="3" maxlength="20"
                 wire:model="proveedor" />
             <br>
             <x-jet-input-error for="proveedor" />

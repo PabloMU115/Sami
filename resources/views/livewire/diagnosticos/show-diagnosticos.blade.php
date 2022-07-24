@@ -2,29 +2,30 @@
     @if (sizeof($expedientes) > 0)
         <div class="overflow-x-auto relative sm:rounded-lg">
             <div class="grid grid-cols-2 justify-items-start">
-                <div class="mt-20 mb-4">
+                <div class="mt-10 mb-4">
                     <label for="id_expediente">Seleccione el Expediente que desea gestionar:</label>
                     <select class="shadow-md rounded" wire:model="id_exp">
                         @foreach ($expedientes as $expediente)
                             @if ($expediente->id_tenant == Auth::id())
-                            @switch($expediente->tipo)
-                                @case(0)
-                                <option class="bg-red" value="{{ $expediente->id_expediente }}">
-                                    {{ $expediente->cedula }} | {{ $expediente->nombre }}
-                                    {{ $expediente->apellidos }} | Inactivo</option>
+                                @switch($expediente->tipo)
+                                    @case(0)
+                                        <option class="bg-red" value="{{ $expediente->id_expediente }}">
+                                            {{ $expediente->cedula }} | {{ $expediente->nombre }}
+                                            {{ $expediente->apellidos }} | Inactivo</option>
                                     @break
-                                @case(1)
-                                <option class="bg-green" value="{{ $expediente->id_expediente }}">
-                                    {{ $expediente->cedula }} | {{ $expediente->nombre }}
-                                    {{ $expediente->apellidos }} | Activo</option>
+
+                                    @case(1)
+                                        <option class="bg-green" value="{{ $expediente->id_expediente }}">
+                                            {{ $expediente->cedula }} | {{ $expediente->nombre }}
+                                            {{ $expediente->apellidos }} | Activo</option>
                                     @break
-                            @endswitch
+                                @endswitch
                             @endif
                         @endforeach
                     </select>
                     <x-jet-label value="Cedula paciente | Nombre del Paciente | Estado del Expediente" />
                 </div>
-                <div class="mt-20 justify-self-end">
+                <div class="mt-10 justify-self-end">
                     @foreach ($expedientes as $expediente)
                         @if ($expediente->id_expediente == $id_exp && $expediente->tipo == '1')
                             <button type="button" class="btn btn-primary mt-4 mb-4 justify-end"
@@ -62,7 +63,7 @@
                                     <td
                                         class="text-center border border-slate-700 py-4 px-6 font-medium text-gray-900  dark:text-white">
                                         <a
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ $diagnostico->nombre_medico }}</a>
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="{{ route('diagnosticos.show', $diagnostico->id_diagnostico) }}">{{ $diagnostico->nombre_medico }}</a>
                                     </td>
                                     <td
                                         class="text-center border border-slate-700 py-4 px-6 font-medium text-gray-900  dark:text-white">
@@ -99,6 +100,8 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+            <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No hay Diagnosticos registrados</h1>
         @endif
         @if ($diagnosticos->hasPages())
             <div class="px-6 py-3">

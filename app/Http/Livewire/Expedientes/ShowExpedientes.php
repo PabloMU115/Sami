@@ -21,7 +21,7 @@ class ShowExpedientes extends Component
 
     public function render()
     {
-        $expedientes = Expediente::where("id_tenant",'=',Auth::id())->paginate(4);
+        $expedientes = Expediente::where("id_tenant",'=',Auth::id())->orderBy('tipo','DESC')->paginate(4);
         return view('livewire.expedientes.show-expedientes', compact('expedientes'));
     }
 }

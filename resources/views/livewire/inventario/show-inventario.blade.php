@@ -42,7 +42,7 @@
                                 <td
                                     class="text-center border border-slate-700  font-medium text-gray-900 dark:text-white">
                                     <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        href="{{ route('inventario.show', $inv->nombre_producto) }}">{{ $inv->nombre }}
+                                        href="{{ route('inventario.show', $inv->id_producto) }}">{{ $inv->nombre }}
                                         {{ $inv->nombre_producto }}</a>
                                 </td>
                                 <td
@@ -53,23 +53,23 @@
                                     class="text-center border border-slate-700  font-medium text-gray-900  dark:text-white">
                                     @switch($inv->tipo)
                                         @case(0)
-                                        Medicamento
+                                            Medicamento
                                         @break
 
                                         @case(1)
-                                        Utencilio Medico
+                                            Utencilio Medico
                                         @break
 
                                         @case(2)
-                                        Protesis
+                                            Protesis
                                         @break
 
                                         @case(3)
-                                        Material Quirurgico
+                                            Material Quirurgico
                                         @break
 
                                         @case(4)
-                                        Producto Higienico
+                                            Producto Higienico
                                         @break
                                     @endswitch
                                 </td>
@@ -104,7 +104,8 @@
                         Nuevo Producto
                     </button>
                 </div>
-                <h1>No se encuentran Productos registrados en el sistema</h1>
+                <h1 class="ml-96 mr-96 bg-red-300 text-center rounded py-2">No se encuentran Productos registrados en el
+                    sistema</h1>
             @endif
         </table>
         @if ($inventario->hasPages())

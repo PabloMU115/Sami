@@ -271,6 +271,11 @@ return [
                     'url'     => 'admin/historialTenants',
                     'icon'    => 'fas fa-fw fa-user-clock',
                 ],
+                [
+                    'text'    => 'Historial de Facturas',
+                    'url'     => 'admin/historialFacturas',
+                    'icon'    => 'fas fa-fw fa-file-invoice-dollar',
+                ],
             ],
         ],
         [
@@ -306,6 +311,17 @@ return [
             'url'  => 'admin/recetas',
         ],
         [
+            'header' => 'Gestion de Recordatorios',
+            'can'    => 'tenant'
+        ],
+        //Agenda
+        [
+            'text'    => 'Agenda',
+            'icon'    => 'fas fa-fw fa-calendar-alt',
+            'can'     => 'tenant',
+            'url'  => 'admin/agenda',
+        ],
+        [
             'header' => 'Gestion de Inventario',
             'can'    => 'tenant'
         ],
@@ -315,6 +331,30 @@ return [
             'icon'    => 'fas fa-fw fa-warehouse',
             'can'     => 'tenant',
             'url'  => 'admin/inventario',
+        ],
+        //Factura
+        [
+            'header' => 'Gestion de Facturas',
+            'can'    => 'tenant'
+        ],
+        [
+            'text'    => 'Facturas',
+            'icon'    => 'fas fa-fw fa-money-bill-alt',
+            'can'     => 'tenant',
+            'submenu' => [
+                [
+                    'text'    => 'Agregar Facturas',
+                    'icon'    => 'fas fa-fw fa-plus',
+                    'url'  => 'detalles',
+                    'can'     => 'tenant',
+                ],
+                [
+                    'text'    => 'Lista Facturas',
+                    'icon'    => 'fas fa-fw fa-book',
+                    'url'  => 'vistfactra',
+                    'can'     => 'tenant',
+                ],
+            ],
         ],
         // [
         //     'text'        => 'pages',
